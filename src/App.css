@@ -1,0 +1,9 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  background-color: rgb(191, 164, 128);
+}
+.avatar-container {
+  height: 250px;
+  width: 550px;
+}
