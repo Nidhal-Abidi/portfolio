@@ -10,9 +10,15 @@ import useMousePosition from "../customHooks/useMousePosition"
 
 export function Avatar(props) {
   const group = useRef()
-  const { nodes, materials } = useGLTF("models/avatar.glb")
+  const { nodes, materials } = useGLTF("models/skinned_model.glb")
   const mousePosition = useMousePosition()
-  console.log(mousePosition)
+  //console.log(mousePosition)
+
+  {
+    /** 
+    Components: + You encapsulize logic in a component similar to react
+			          + useFrame is a special hook which has the same goal as requestAnimationFrame in canvas or threejs */
+  }
 
   useFrame(() => {
     const target = new Vector3(
@@ -25,7 +31,7 @@ export function Avatar(props) {
   })
 
   return (
-    <group {...props} ref={group} dispose={null}>
+    <group {...props} dispose={null} ref={group}>
       <primitive object={nodes.Hips} />
       <skinnedMesh
         name="EyeLeft"
@@ -70,27 +76,43 @@ export function Avatar(props) {
         skeleton={nodes.Wolf3D_Glasses.skeleton}
       />
       <skinnedMesh
-        geometry={nodes.Wolf3D_Body.geometry}
-        material={materials.Wolf3D_Body}
-        skeleton={nodes.Wolf3D_Body.skeleton}
-      />
-      <skinnedMesh
-        geometry={nodes.Wolf3D_Outfit_Bottom.geometry}
-        material={materials.Wolf3D_Outfit_Bottom}
-        skeleton={nodes.Wolf3D_Outfit_Bottom.skeleton}
-      />
-      <skinnedMesh
-        geometry={nodes.Wolf3D_Outfit_Footwear.geometry}
-        material={materials.Wolf3D_Outfit_Footwear}
-        skeleton={nodes.Wolf3D_Outfit_Footwear.skeleton}
-      />
-      <skinnedMesh
+        name="Wolf3D_Outfit_Top"
         geometry={nodes.Wolf3D_Outfit_Top.geometry}
         material={materials.Wolf3D_Outfit_Top}
         skeleton={nodes.Wolf3D_Outfit_Top.skeleton}
+        morphTargetDictionary={nodes.Wolf3D_Outfit_Top.morphTargetDictionary}
+        morphTargetInfluences={nodes.Wolf3D_Outfit_Top.morphTargetInfluences}
+      />
+      <skinnedMesh
+        name="Wolf3D_Outfit_Bottom"
+        geometry={nodes.Wolf3D_Outfit_Bottom.geometry}
+        material={materials.Wolf3D_Outfit_Bottom}
+        skeleton={nodes.Wolf3D_Outfit_Bottom.skeleton}
+        morphTargetDictionary={nodes.Wolf3D_Outfit_Bottom.morphTargetDictionary}
+        morphTargetInfluences={nodes.Wolf3D_Outfit_Bottom.morphTargetInfluences}
+      />
+      <skinnedMesh
+        name="Wolf3D_Outfit_Footwear"
+        geometry={nodes.Wolf3D_Outfit_Footwear.geometry}
+        material={materials.Wolf3D_Outfit_Footwear}
+        skeleton={nodes.Wolf3D_Outfit_Footwear.skeleton}
+        morphTargetDictionary={
+          nodes.Wolf3D_Outfit_Footwear.morphTargetDictionary
+        }
+        morphTargetInfluences={
+          nodes.Wolf3D_Outfit_Footwear.morphTargetInfluences
+        }
+      />
+      <skinnedMesh
+        name="Wolf3D_Body"
+        geometry={nodes.Wolf3D_Body.geometry}
+        material={materials.Wolf3D_Body}
+        skeleton={nodes.Wolf3D_Body.skeleton}
+        morphTargetDictionary={nodes.Wolf3D_Body.morphTargetDictionary}
+        morphTargetInfluences={nodes.Wolf3D_Body.morphTargetInfluences}
       />
     </group>
   )
 }
 
-useGLTF.preload("models/avatar.glb")
+useGLTF.preload("models/skinned_model.glb")
