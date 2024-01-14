@@ -9,7 +9,7 @@ export function AvatarContainer({ isDarkTheme }) {
 		             + Any child of Canvas will be part of the scene (i.e. displayed on the screen).
         */}
       <Canvas shadows camera={{ position: [0, 0, 1], fov: 22 }}>
-        <color attach="background" args={[isDarkTheme ? "black" : "white"]} />
+        <color attach="background" args={[isDarkTheme ? "#121212" : "white"]} />
         <Experience />
       </Canvas>
     </div>

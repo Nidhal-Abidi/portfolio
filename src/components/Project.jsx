@@ -1,5 +1,4 @@
-import linkIcon from "/icons/link.svg"
-
+import LinkSvg from "../icons/link.svg?react"
 export function Project({
   videoSrc,
   projURL,
@@ -26,9 +25,11 @@ export function Project({
       </div>
       <a href={projURL} target="_blank" rel="noopener noreferrer">
         {projName}
-        <img src={linkIcon} alt="link-svg" />
+        <span>
+          <LinkSvg />
+        </span>
       </a>
-      <p>{projDescr}</p>
+      <p className="proj-descr">{projDescr}</p>
       <div>
         <span>{projYear}</span>
         {projTools.length != 0

@@ -1,18 +1,26 @@
-import { useEffect, useState } from "react"
 import "./App.css"
+import { useEffect, useState } from "react"
 import { AvatarContainer } from "./components/AvatarContainer"
 
-import switchToLightMode from "/icons/switch_to_light_mode.svg"
-import switchToDarkMode from "/icons/switch_to_dark_mode.svg"
-import emailIcon from "/icons/email.svg"
-import githubIcon from "/icons/github.svg"
-import linkedinIcon from "/icons/linkedin.svg"
+/* Importing SVGs: Remove 'height' & 'width' from svg file + set fill to "currentColor" */
+import EmailSvg from "./icons/email.svg?react"
+import LinkedInSvg from "./icons/linkedin.svg?react"
+import GithubSvg from "./icons/github.svg?react"
+import ToDarkModeSvg from "./icons/switch_to_dark_mode.svg?react"
+import ToLightModeSvg from "./icons/switch_to_light_mode.svg?react"
 
-/* Importing videos */
 import { ProjectGrid } from "./components/ProjectsGrid"
 
 function App() {
   const [isDarkTheme, setIsDarkTheme] = useState(false)
+  useEffect(() => {
+    if (isDarkTheme) {
+      document.body.classList.add("dark")
+    } else {
+      document.body.classList.remove("dark")
+    }
+  }, [isDarkTheme])
+
   useEffect(() => {
     console.log("Nidhal Labidi | Software Engineer")
   }, [])
@@ -26,17 +34,13 @@ function App() {
           onClick={() => setIsDarkTheme((prevVal) => !prevVal)}
         >
           {isDarkTheme ? (
-            <img
-              className="icon"
-              src={switchToLightMode}
-              alt="to light mode icon"
-            />
+            <span className="icon">
+              <ToLightModeSvg />
+            </span>
           ) : (
-            <img
-              className="icon"
-              src={switchToDarkMode}
-              alt="to dark mode icon"
-            />
+            <span className="icon">
+              <ToDarkModeSvg />
+            </span>
           )}
         </button>
       </header>
@@ -59,7 +63,9 @@ function App() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <img src={githubIcon} alt="git" />
+                  <span>
+                    <GithubSvg />
+                  </span>
                   GitHub
                 </a>
                 <a
@@ -67,11 +73,15 @@ function App() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <img src={linkedinIcon} alt="linkedin" />
+                  <span>
+                    <LinkedInSvg />
+                  </span>
                   LinkedIn
                 </a>
                 <a href="mailto:labidinidhal23@gmail.com">
-                  <img src={emailIcon} alt="email" />
+                  <span>
+                    <EmailSvg />
+                  </span>
                   Email
                 </a>
               </div>
