@@ -2,11 +2,21 @@ import { useEffect, useState } from "react"
 import "./App.css"
 import { AvatarContainer } from "./components/AvatarContainer"
 
+import switchToLightMode from "/icons/switch_to_light_mode.svg"
+import switchToDarkMode from "/icons/switch_to_dark_mode.svg"
+import emailIcon from "/icons/email.svg"
+import githubIcon from "/icons/github.svg"
+import linkedinIcon from "/icons/linkedin.svg"
+
+/* Importing videos */
+import { ProjectGrid } from "./components/ProjectsGrid"
+
 function App() {
   const [isDarkTheme, setIsDarkTheme] = useState(false)
   useEffect(() => {
     console.log("Nidhal Labidi | Software Engineer")
   }, [])
+
   return (
     <>
       <header>
@@ -18,13 +28,13 @@ function App() {
           {isDarkTheme ? (
             <img
               className="icon"
-              src="/icons/switch_to_light_mode.svg"
+              src={switchToLightMode}
               alt="to light mode icon"
             />
           ) : (
             <img
               className="icon"
-              src="icons/switch_to_dark_mode.svg"
+              src={switchToDarkMode}
               alt="to dark mode icon"
             />
           )}
@@ -44,15 +54,24 @@ function App() {
             <div className="container-socials">
               <p>Socials</p>
               <div className="wrapper">
-                <a href="https://github.com/Nidhal-Abidi">
-                  <img src="/icons/github.svg" alt="git" /> GitHub
+                <a
+                  href="https://github.com/Nidhal-Abidi"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img src={githubIcon} alt="git" />
+                  GitHub
                 </a>
-                <a href="https://www.linkedin.com/in/nidhalabidi/">
-                  <img src="/icons/linkedin.svg" alt="linkedin" />
+                <a
+                  href="https://www.linkedin.com/in/nidhalabidi/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img src={linkedinIcon} alt="linkedin" />
                   LinkedIn
                 </a>
                 <a href="mailto:labidinidhal23@gmail.com">
-                  <img src="/icons/email.svg" alt="email" />
+                  <img src={emailIcon} alt="email" />
                   Email
                 </a>
               </div>
@@ -91,127 +110,7 @@ function App() {
         </div>
         <div className="container-personal-projs">
           <p>Personal</p>
-          <div className="wrapper">
-            {/** First proj */}
-            <div className="project-container">
-              <div className="video-container">
-                <video src="#"></video>
-              </div>
-              <a
-                href="https://nidhal-abidi.github.io/MazeMaster/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                MazeMaster
-                <img src="/icons/link.svg" alt="link-svg" />
-              </a>
-              <p>
-                An audible and visual representation of some pathfinding
-                algorithms (Dijkstra, A*, DFS, BFS).
-              </p>
-              <div>
-                <span>2024</span>
-                <span style={{ backgroundColor: "#ee9536" }}>React</span>
-                <span style={{ backgroundColor: "#ee9536" }}>
-                  Web Audio API
-                </span>
-              </div>
-            </div>
-
-            {/** Second proj */}
-            <div className="project-container">
-              <div className="video-container">
-                <video src="#"></video>
-              </div>
-              <a
-                href="https://nidhal-abidi.github.io/AlgoAnimation/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Sorting Orchestra
-                <img src="/icons/link.svg" alt="link-svg" />
-              </a>
-              <p>
-                Representing Insertion, Bubble and Selection sort using
-                animations and sounds.
-              </p>
-              <div>
-                <span>2023</span>
-                <span style={{ backgroundColor: "#ee9536" }}>React</span>
-                <span style={{ backgroundColor: "#ee9536" }}>
-                  Web Audio API
-                </span>
-              </div>
-            </div>
-
-            {/** Third proj */}
-            <div className="project-container">
-              <div className="video-container">
-                <video src="#"></video>
-              </div>
-              <a
-                href="https://github.com/Nidhal-Abidi/reddit_clone"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                CommunityPost <img src="/icons/link.svg" alt="link-svg" />
-              </a>
-              <p>
-                A website that manages posts and users (all CRUD operations)
-                using React-router-dom and JSON server.
-              </p>
-              <div>
-                <span>2023</span>
-                <span style={{ backgroundColor: "#ee9536" }}>React</span>
-              </div>
-            </div>
-
-            {/** Fourth project */}
-            <div className="project-container">
-              <div className="video-container">
-                <video src="#"></video>
-              </div>
-              <a
-                href="https://youtu.be/6IWqaNgcnCs"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                School Network <img src="/icons/link.svg" alt="link-svg" />
-              </a>
-              <p>
-                Web app that allows information sharing between staff, teachers,
-                parents, and students in the context of a high school.
-              </p>
-              <div>
-                <span>2021</span>
-                <span style={{ backgroundColor: "#ee9536" }}>Laravel</span>
-                <span style={{ backgroundColor: "#ee9536" }}>PHP</span>
-              </div>
-            </div>
-
-            {/** Fifth project */}
-            <div className="project-container">
-              <div className="video-container">
-                <video src="#"></video>
-              </div>
-              <a
-                href="https://youtu.be/qlmPrDkBDAM"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                LAcademy <img src="/icons/link.svg" alt="link-svg" />
-              </a>
-              <p>
-                Web app that allows information sharing between staff, teachers,
-                parents, and students in the context of a high school.
-              </p>
-              <div>
-                <span>2020</span>
-                <span style={{ backgroundColor: "#ee9536" }}>PHP</span>
-                <span style={{ backgroundColor: "#ee9536" }}>Bootstrap</span>
-              </div>
-            </div>
-          </div>
+          <ProjectGrid />
         </div>
       </main>
       <footer>

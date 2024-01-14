@@ -154,8 +154,8 @@ header .icon {
   display: grid;
   justify-content: space-around;
   align-content: center;
-  gap: 1rem;
-  grid-template-columns: repeat(auto-fill, 360px);
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, 480px);
   margin-bottom: 2rem;
 }
 .container-personal-projs .project-container {
@@ -174,9 +174,10 @@ header .icon {
   margin-left: 0.5rem;
 }
 .container-personal-projs .video-container {
-  height: 205px;
-  width: 360px;
+  height: 250px;
+  width: 480px;
   background-color: grey;
+  border-radius: 1rem;
 }
 
 .container-personal-projs a {
@@ -222,4 +223,15 @@ footer div:not(:nth-of-type(1)) {
 
 footer a {
   color: blue;
+}
+
+.video-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+
+.video-container video:hover {
+  transform: scale(1.005);
 }

@@ -8,9 +8,11 @@ import { useFrame } from "@react-three/fiber"
 import { Vector3 } from "three"
 import useMousePosition from "../customHooks/useMousePosition"
 
+import skinnedModel from "/models/skinned_model.glb?url"
+
 export function Avatar(props) {
   const group = useRef()
-  const { nodes, materials } = useGLTF("models/skinned_model.glb")
+  const { nodes, materials } = useGLTF(skinnedModel)
   const mousePosition = useMousePosition()
   //console.log(mousePosition)
 
@@ -115,4 +117,4 @@ export function Avatar(props) {
   )
 }
 
-useGLTF.preload("models/skinned_model.glb")
+useGLTF.preload(skinnedModel)
