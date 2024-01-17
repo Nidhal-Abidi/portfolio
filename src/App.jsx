@@ -117,7 +117,7 @@ function App() {
               </div>
             </div>
           </div>
-          <div>
+          <div className="container-chat-avatar">
             <AvatarContainer isDarkTheme={isDarkTheme} />
             <ChatBot />
           </div>
@@ -127,6 +127,7 @@ function App() {
           <ProjectGrid />
         </div>
       </main>
+
       <footer>
         <div>© Copyright 2024 Nidhal Labidi</div>
         <div>Built with Three.js and React</div>

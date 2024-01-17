@@ -97,7 +97,7 @@ header button span,
 .container-info-avatar {
   display: flex;
   justify-content: space-between;
-  flex-wrap: no-wrap;
+  flex-wrap: nowrap;
   padding: 4em 0.75em 1em 0.75em;
 }
 .container-socials .wrapper {
@@ -208,6 +208,7 @@ header button span,
   width: 480px;
   background-color: grey;
   border-radius: 1rem;
+  flex-shrink: 2;
 }
 
 .container-personal-projs a {
@@ -401,4 +402,17 @@ footer a {
 .choices .restart-conversation:hover {
   background-color: var(--bg-restart-clr);
   color: var(--text-restart-clr);
+}
+
+/*Responsive screen*/
+@media (max-width: 800px) {
+  .container-info-avatar {
+    flex-direction: column;
+  }
+  .container-info-avatar .container-chat-avatar {
+    order: 1;
+  }
+  .container-info-avatar .container-info {
+    order: 2;
+  }
 }

@@ -151,7 +151,8 @@ export function ChatBot() {
         <div className="typing typing-1"></div>
         <div className="typing typing-2"></div>
         <div className="typing typing-3"></div>
-      </div> */}
+      </div> 
+      */}
     </div>
   )
 }
