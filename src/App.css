@@ -11,7 +11,11 @@
   --header-border-clr: rgba(0, 0, 0, 0.12);
   --text-color: #121212;
   --bg-clr: white;
+  --bg-hover-clr: #e0e0e0;
   --text-accent-clr: rgba(0, 0, 0, 0.6);
+
+  --text-restart-clr: purple;
+  --bg-restart-clr: white;
 
   --socials-btn-clr: rgba(0, 0, 0, 0.08);
   --socials-btn-hover-clr: rgba(0, 0, 0, 0.18);
@@ -42,6 +46,7 @@ body {
 .avatar-container {
   height: 250px;
   width: 480px;
+  margin-bottom: 1rem;
 }
 
 header {
@@ -266,6 +271,7 @@ footer a {
 
 .dark {
   --bg-clr: #121212;
+  --bg-hover-clr: #262626;
   --text-color: white;
   --text-accent-clr: rgba(255, 255, 255, 0.7);
   --socials-btn-clr: rgba(255, 255, 255, 0.26);
@@ -278,4 +284,120 @@ footer a {
   --chip-light-blue-clr: var(--chip-blue-clr);
   --chip-light-purple-clr: var(--chip-purple-clr);
   --chip-light-dark-pink-clr: var(--chip-dark-pink-clr);
+
+  /*Setting the restart color*/
+  --bg-restart-clr: hsl(290, 9%, 13%);
+  --text-restart-clr: hsl(291.3, 46.94%, 71.18%);
+}
+
+/*Chatbot styles*/
+#chat {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 30rem;
+  max-height: 30rem;
+  border-radius: 1rem;
+  background-color: var(--bg-clr);
+  box-shadow: 0 0 8rem 0 rgba(black, 0.1), 0rem 2rem 4rem -3rem rgba(black, 0.5);
+}
+
+#chat.messages {
+  padding: 0;
+  flex-shrink: 2;
+  overflow-y: auto;
+}
+
+#chat.messages .message {
+  color: black;
+  padding: 0.5rem 1rem;
+  margin: 0.3rem;
+  border-radius: 1.125rem 1.125rem 1.125rem 0;
+  height: fit-content;
+  width: fit-content;
+  max-width: 66%;
+  box-shadow: 0 0 2rem rgba(black, 0.075), 0rem 1rem 1rem -1rem rgba(black, 0.1);
+  background-color: #f3f4f5;
+}
+
+/* To hide all the questions that the user might answer */
+.hide > .choice {
+  display: none;
+}
+
+.choices {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.choices .choice {
+  border: 1px solid var(--text-color);
+  padding: 0.5rem 1rem;
+  margin: 0.3rem;
+  margin-right: 0;
+  border-radius: 1rem;
+  background-color: var(--bg-clr);
+  cursor: pointer;
+  justify-content: start;
+
+  overflow: hidden;
+}
+
+.choices .choice:hover {
+  background-color: var(--bg-hover-clr);
+}
+
+#chat.messages .sender {
+  margin: 0.3rem 0.3rem 0.3rem auto;
+  border-radius: 1.125rem 1.125rem 0 1.125rem;
+  background: #4573ff;
+  color: white;
+}
+
+#chat.messages .typing {
+  display: inline-block;
+  width: 0.8rem;
+  height: 0.8rem;
+  margin-right: 0rem;
+  box-sizing: border-box;
+  background: grey;
+  border-radius: 50%;
+}
+#chat.messages .typing-1 {
+  animation: typing 1s infinite;
+}
+#chat.messages .typing-2 {
+  animation: typing 1s 250ms infinite;
+}
+#chat.messages .typing-3 {
+  animation: typing 1s 500ms infinite;
+}
+
+@keyframes typing {
+  0%,
+  75%,
+  100% {
+    transform: translate(0, 0.25rem) scale(0.9);
+    opacity: 0.5;
+  }
+
+  25% {
+    transform: translate(0, -0.25rem) scale(1);
+    opacity: 1;
+  }
+}
+
+.choices .restart-conversation {
+  color: var(--text-restart-clr);
+  margin: 1rem auto;
+  cursor: pointer;
+  padding: 1rem 0.5rem;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+.choices .restart-conversation:hover {
+  background-color: var(--bg-restart-clr);
+  color: var(--text-restart-clr);
 }

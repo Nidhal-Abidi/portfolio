@@ -10,6 +10,7 @@ import ToDarkModeSvg from "./icons/switch_to_dark_mode.svg?react"
 import ToLightModeSvg from "./icons/switch_to_light_mode.svg?react"
 
 import { ProjectGrid } from "./components/ProjectsGrid"
+import { ChatBot } from "./components/ChatBot"
 
 function App() {
   const [isDarkTheme, setIsDarkTheme] = useState(false)
@@ -116,7 +117,10 @@ function App() {
               </div>
             </div>
           </div>
-          <AvatarContainer isDarkTheme={isDarkTheme} />
+          <div>
+            <AvatarContainer isDarkTheme={isDarkTheme} />
+            <ChatBot />
+          </div>
         </div>
         <div className="container-personal-projs">
           <p>Personal</p>
