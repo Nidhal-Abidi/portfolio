@@ -34,7 +34,7 @@ export function ChatBot() {
   useEffect(() => {
     const cancelToken = axios.CancelToken
     const source = cancelToken.source()
-    getCatFact(source)
+    getJokesAndCatFacts(source)
 
     return () => source.cancel("Axios request cancelled!")
   }, [])
@@ -46,35 +46,56 @@ export function ChatBot() {
     })
   }
 
-  function getCatFact(source) {
-    axios
-      .get("https://catfact.ninja/fact", { cancelToken: source.token })
-      .then((resp) => {
-        console.log(resp.data.fact)
-        if (choices.length == 0) {
-          // Executes whenever the user resets the conversation
-          // Resetting the array to the initial values + a new random cat fact.
-          setChoices(() => [
-            ...INITIAL_CHOICES,
-            {
-              id: "catFact",
-              question: "Do you want a cat fact 😼",
-              response: resp.data.fact + "\r\n[Src: catfact.ninja]",
-            },
-          ])
-        } else {
-          // Executes on mount, when the array already contains 2 questions
-          setChoices((prevChoices) => [
-            ...prevChoices,
-            {
-              id: "catFact",
-              question: "Do you want a cat fact 😼",
-              response: resp.data.fact + "\r\n[Src: catfact.ninja]",
-            },
-          ])
-        }
-      })
-      .catch((err) => console.log(err))
+  function getJokesAndCatFacts(source) {
+    Promise.all([
+      axios.get("https://catfact.ninja/fact", { cancelToken: source.token }),
+      axios.get(
+        "https://v2.jokeapi.dev/joke/Programming?blacklistFlags=nsfw,religious&type=twopart",
+        { cancelToken: source.token }
+      ),
+    ]).then((resp) => {
+      let [catRespObj, jokeRespObj] = resp
+      if (choices.length === 0) {
+        // Executes whenever the user resets the conversation
+        // Resetting the array to the initial values + a new random cat fact & a joke.
+        setChoices(() => [
+          ...INITIAL_CHOICES,
+          {
+            id: "joke",
+            question: "Do you want to hear a joke? 🤣",
+            response:
+              jokeRespObj.data.setup +
+              "\r\n" +
+              jokeRespObj.data.delivery +
+              "\r\n[source: v2.jokeapi.dev]",
+          },
+          {
+            id: "catFact",
+            question: "Do you want a cat fact 😼",
+            response: catRespObj.data.fact + "\r\n[source: catfact.ninja]",
+          },
+        ])
+      } else {
+        // Executes on mount, when the array already contains 2 questions
+        setChoices((prevChoices) => [
+          ...prevChoices,
+          {
+            id: "joke",
+            question: "Do you want to hear a joke? 🤣",
+            response:
+              jokeRespObj.data.setup +
+              "\r\n" +
+              jokeRespObj.data.delivery +
+              "\r\n[source: v2.jokeapi.dev]",
+          },
+          {
+            id: "catFact",
+            question: "Do you want a cat fact 😼",
+            response: catRespObj.data.fact + "\r\n[source: catfact.ninja]",
+          },
+        ])
+      }
+    })
   }
 
   return (
@@ -116,8 +137,7 @@ export function ChatBot() {
               onClick={() => {
                 const cancelToken = axios.CancelToken
                 const source = cancelToken.source()
-                getCatFact(source)
-                //setChoices(INITIAL_CHOICES)
+                getJokesAndCatFacts(source)
                 setPrevChoices(INITIAL_PREV_CHOICES)
               }}
             >
