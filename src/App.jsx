@@ -90,6 +90,7 @@ function App() {
             <div className="container-toolset">
               <p>Toolset</p>
               <div className="wrapper">
+                <div className="chip chip-orange">Typescript</div>
                 <div className="chip chip-orange">Javascript(ES6)</div>
                 <div className="chip chip-orange">PHP</div>
                 <div className="chip chip-orange">C++</div>
@@ -98,6 +99,8 @@ function App() {
                 <div className="chip chip-green">HTML5</div>
                 <div className="chip chip-green">CSS3</div>
                 <div className="chip chip-green">React</div>
+                <div className="chip chip-green">Svelte</div>
+                <div className="chip chip-green">SvelteKit</div>
                 <div className="chip chip-green">Laravel</div>
                 <div className="chip chip-green">Node.js</div>
                 <div className="chip chip-green">Express.js</div>
@@ -111,6 +114,7 @@ function App() {
                 <div className="chip chip-purple">MongoDB</div>
                 <div className="chip chip-purple">PL/SQL</div>
 
+                <div className="chip chip-dark-pink">Tailwind CSS</div>
                 <div className="chip chip-dark-pink">Material UI</div>
                 <div className="chip chip-dark-pink">Bootstrap</div>
                 <div className="chip chip-dark-pink">Figma</div>
